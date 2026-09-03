@@ -1,0 +1,108 @@
+---
+title: "Brand assets"
+description: "The Mintlify mark, wordmark and lockups, in the variants Brand Studio uses."
+---
+
+Source SVGs for the mark, wordmark and lockups. Right-click any file below and
+**Save link as** to download, or grab the whole set from the
+[repository](https://github.com/jadonyara/brand-studio-docs/tree/main/images/brand).
+
+<Note>
+  These are the files as supplied, renamed for clarity — nothing has been
+  redrawn. For official usage rules (clear space, minimum sizes, co-branding),
+  refer to the brand guidelines rather than this page.
+</Note>
+
+## The mark
+
+<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px",margin:"1.25rem 0"}}>
+  <div style={{background:"#ffffff",border:"1px solid rgba(0,0,0,.10)",borderRadius:"10px",padding:"28px",display:"flex",gap:"22px",alignItems:"center",justifyContent:"center"}}>
+    <img src="/images/brand/mark-green.svg" alt="Mark, green" style={{height:"52px"}} />
+    <img src="/images/brand/mark-black.svg" alt="Mark, black" style={{height:"52px"}} />
+    <img src="/images/brand/mark-duotone.svg" alt="Mark, duotone" style={{height:"52px"}} />
+  </div>
+  <div style={{background:"#0a0b0f",border:"1px solid rgba(255,255,255,.15)",borderRadius:"10px",padding:"28px",display:"flex",gap:"22px",alignItems:"center",justifyContent:"center"}}>
+    <img src="/images/brand/mark-green.svg" alt="Mark, green on dark" style={{height:"52px"}} />
+    <img src="/images/brand/mark-white.svg" alt="Mark, white" style={{height:"52px"}} />
+    <img src="/images/brand/mark-grey.svg" alt="Mark, grey" style={{height:"52px"}} />
+  </div>
+</div>
+
+| File | Colours | Use on |
+| --- | --- | --- |
+| [`mark-green.svg`](/images/brand/mark-green.svg) | `#18E299` + `#0C8C5E` | Light or dark |
+| [`mark-white.svg`](/images/brand/mark-white.svg) | White | Dark only |
+| [`mark-black.svg`](/images/brand/mark-black.svg) | `#0A0B0F` | Light only |
+| [`mark-grey.svg`](/images/brand/mark-grey.svg) | `#55565E` + `#888990` | Light or dark |
+| [`mark-duotone.svg`](/images/brand/mark-duotone.svg) | `#0A0B0F` + `#55565E` | Light only |
+
+## The wordmark
+
+<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px",margin:"1.25rem 0"}}>
+  <div style={{background:"#ffffff",border:"1px solid rgba(0,0,0,.10)",borderRadius:"10px",padding:"32px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+    <img src="/images/brand/wordmark-black.svg" alt="Wordmark, black" style={{height:"34px"}} />
+  </div>
+  <div style={{background:"#0a0b0f",border:"1px solid rgba(255,255,255,.15)",borderRadius:"10px",padding:"32px",display:"flex",alignItems:"center",justifyContent:"center"}}>
+    <img src="/images/brand/wordmark-white.svg" alt="Wordmark, white" style={{height:"34px"}} />
+  </div>
+</div>
+
+| File | Colour | Use on |
+| --- | --- | --- |
+| [`wordmark-black.svg`](/images/brand/wordmark-black.svg) | `#121715` | Light |
+| [`wordmark-white.svg`](/images/brand/wordmark-white.svg) | White | Dark |
+
+## Lockups
+
+Mark and wordmark together. Each variant is built for one background — the
+wordmark colour is baked in, so using the wrong one makes half the lockup
+disappear.
+
+<div style={{display:"grid",gridTemplateColumns:"1fr",gap:"12px",margin:"1.25rem 0"}}>
+  <div style={{background:"#ffffff",border:"1px solid rgba(0,0,0,.10)",borderRadius:"10px",padding:"30px",display:"flex",flexDirection:"column",gap:"22px",alignItems:"center"}}>
+    <img src="/images/brand/lockup-green-on-light.svg" alt="Lockup, green on light" style={{height:"38px"}} />
+    <img src="/images/brand/lockup-grey-on-light.svg" alt="Lockup, grey on light" style={{height:"32px"}} />
+    <img src="/images/brand/lockup-black.svg" alt="Lockup, all black" style={{height:"32px"}} />
+  </div>
+  <div style={{background:"#0a0b0f",border:"1px solid rgba(255,255,255,.15)",borderRadius:"10px",padding:"30px",display:"flex",flexDirection:"column",gap:"22px",alignItems:"center"}}>
+    <img src="/images/brand/lockup-green-on-dark.svg" alt="Lockup, green on dark" style={{height:"38px"}} />
+    <img src="/images/brand/lockup-grey-on-dark.svg" alt="Lockup, grey on dark" style={{height:"32px"}} />
+    <img src="/images/brand/lockup-white.svg" alt="Lockup, all white" style={{height:"32px"}} />
+  </div>
+</div>
+
+| File | Mark | Wordmark | Use on |
+| --- | --- | --- | --- |
+| [`lockup-green-on-light.svg`](/images/brand/lockup-green-on-light.svg) | Green | `#121715` | Light |
+| [`lockup-green-on-dark.svg`](/images/brand/lockup-green-on-dark.svg) | Green | White | Dark |
+| [`lockup-grey-on-light.svg`](/images/brand/lockup-grey-on-light.svg) | Grey | `#0A0B0F` | Light |
+| [`lockup-grey-on-dark.svg`](/images/brand/lockup-grey-on-dark.svg) | Grey | White | Dark |
+| [`lockup-black.svg`](/images/brand/lockup-black.svg) | Black | Black | Light |
+| [`lockup-white.svg`](/images/brand/lockup-white.svg) | White | White | Dark |
+
+<Warning>
+  `lockup-white.svg` is **derived**, not supplied — it's `lockup-black.svg`
+  recoloured to white, since the set had no fully-mono reversed lockup. It's a
+  fill swap on the original paths, but get it blessed before external use.
+</Warning>
+
+## Colours
+
+The palette Brand Studio ships with as generator defaults.
+
+<div style={{display:"flex",gap:"10px",flexWrap:"wrap",margin:"1.25rem 0"}}>
+  {[["#18E299","Primary green"],["#0C8C5E","Deep green"],["#BAFF24","Lime"],["#44AEFF","Blue"],["#D87CFF","Violet"],["#FFA723","Amber"],["#0A0B0F","Near-black"],["#121715","Ink"]].map(([hex,label]) => (
+    <div key={hex} style={{width:"104px"}}>
+      <div style={{background:hex,height:"56px",borderRadius:"8px",border:"1px solid rgba(255,255,255,.12)"}} />
+      <div style={{fontSize:"11px",marginTop:"6px",fontWeight:600}}>{label}</div>
+      <div style={{fontSize:"11px",opacity:.6,fontFamily:"monospace"}}>{hex}</div>
+    </div>
+  ))}
+</div>
+
+<Tip>
+  Ribbon's default gradient runs `#18E299` → `#BAFF24`, and its particles cycle
+  through violet, amber, blue and pink. Dither uses near-black through the greens
+  and blues. Both are editable — see [Ribbon](/engines/ribbon) and
+  [Dither](/engines/dither).
+</Tip>
