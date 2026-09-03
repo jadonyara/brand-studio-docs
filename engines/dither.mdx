@@ -1,0 +1,64 @@
+---
+title: "Dither"
+description: "Procedural noise rendered as a retro pixel or halftone grid."
+---
+
+Dither generates a noise field, then draws it as a grid of coloured squares
+using an ordered (Bayer) dither. The result reads as a retro pixel texture.
+
+## Pattern
+
+| Control | Range | What it does |
+| --- | --- | --- |
+| `type` | — | The noise algorithm. `fbm` is soft and cloudy, `ridge` gives sharp veins, `worley` makes cellular blobs, `warp` is fbm pushed through itself for a liquid look. |
+| `scale` | 1–12 | Noise zoom. Low is large soft shapes, high is fine detail. |
+| `stretch y` | 0.2–4 | Squashes or stretches the field vertically. Good for horizon-like bands. |
+| `octaves` | 1–8 | Layers of detail. Higher is richer but slower. |
+| `lacunarity` | 1.2–3 | How much finer each octave gets. |
+| `gain` | 0.2–0.9 | How much each octave contributes. |
+| `warp` | 0–2 | Distortion strength (mainly for `warp` type). |
+| `contrast` | 0.3–2.5 | Pushes the field toward extremes. |
+| `density` | −0.6–0.6 | Shifts the overall threshold — effectively how much of the frame is filled. |
+| `drift` | 0–3 | How fast the field scrolls sideways. |
+| `speed` | 0–3 | Overall rate multiplier. |
+
+## Grid
+
+| Control | Range | What it does |
+| --- | --- | --- |
+| `cell px` | 3–40 | Pixel size. This is the single biggest look control. |
+| `gap` | 0–0.9 | Space between cells. |
+| `jitter` | 0–1 | Randomly offsets cells for a hand-made feel. |
+| `sparsity` | 0–0.9 | Randomly drops cells entirely. |
+| `dither` | — | Bayer matrix size: `2x2`, `4x4` or `8x8`. Larger matrices give smoother gradients. |
+
+## Pixels
+
+| Control | What it does |
+| --- | --- |
+| `pixel size` | Square size within its cell, 0.1–1.2. Above 1 they overlap. |
+| `opacity` | Overall opacity of the pixels. |
+
+## Twinkle
+
+| Control | What it does |
+| --- | --- |
+| `amount` | How much individual cells flicker, 0–0.4. |
+| `speed` | Flicker rate. |
+
+## Colour
+
+Five colour slots, assigned by noise value — `color 1` for the lowest values
+through `color 5` for the highest. Plus `bg` and `alpha bg` for the background.
+
+## Seed
+
+`seed` changes the random field; **Randomize** rerolls the whole pattern and
+grid while leaving your colours intact.
+
+<Warning>
+  Dither is much heavier to render than Ribbon — every cell is evaluated
+  independently. A small `cell px` at a large composition size can drop the live
+  preview well below 60fps. Set **preview** to 1/2 or 1/4 in the timeline bar
+  while you work; exports are unaffected and still come out at full rate.
+</Warning>

@@ -1,0 +1,49 @@
+---
+title: "Freeform vs Editor"
+description: "Two modes over the same generators, and the composition settings they share."
+---
+
+The mode switch sits top left, just under the **Ribbon / Dither** tabs.
+
+## Freeform
+
+No timeline. The animation runs on a continuous clock and the controls panel
+edits values directly. Use it when you want an asset, not an animation.
+
+- The timeline, stopwatches and keyframe controls are hidden
+- <kbd>space</kbd> pauses the live preview
+- **EXPORT** asks for a length in seconds instead of a frame range
+- **SVG** and **PNG** still export the frame currently on screen
+
+<Note>
+  Freeform **ignores** your keyframes rather than deleting them. If you've built
+  an animation in Editor mode, switching to Freeform and back leaves it exactly
+  as it was — and edits you make in Freeform go to the base values, so they
+  can't quietly rewrite an animation you can't see.
+</Note>
+
+## Editor
+
+The full timeline: playhead, keyframe lanes, graph editor, in/out range. See
+[Timeline](/editor/timeline).
+
+## Composition settings
+
+Both modes share the composition, set in the timeline bar (visible in Editor
+mode):
+
+| Setting | What it does |
+| --- | --- |
+| `dur` | Length in **frames**. The seconds readout next to it updates as you type. |
+| `fps` | Frame rate. 60 by default. Exports hit this exactly. |
+| `comp` | Output width and height in pixels. |
+| `preset` | Common sizes — 16:9, square, vertical. |
+| `preview` | Preview render resolution. Drop to 1/2 or 1/4 if the preview stutters; it does **not** affect exports. |
+| `loop` | Whether playback loops at the out point. |
+
+<Warning>
+  The composition aspect ratio drives every export. A 1720×1080 comp is not 16:9,
+  so a "4K" export from it is 3440×2160, not 3840×2160. If you need exactly
+  3840×2160, set the comp to **1920×1080** with the preset dropdown first, then
+  export at 2×.
+</Warning>

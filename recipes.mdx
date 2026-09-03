@@ -1,0 +1,81 @@
+---
+title: "Recipes"
+description: "Step-by-step for the things people actually ask for."
+---
+
+## A looping background for a website hero
+
+<Steps>
+  <Step title="Set the comp">
+    Timeline bar → `preset` → **1920×1080 · 16:9**. Set `dur` to `360` for a
+    six-second loop at 60fps.
+  </Step>
+  <Step title="Build a look">
+    Stay in **Freeform** while you explore. Switch to **Editor** once you like it.
+  </Step>
+  <Step title="Make it loop seamlessly">
+    Leave the motion driven by `speed` alone and don't keyframe anything. The
+    generators run continuously, so the clip cuts cleanly as long as you don't
+    animate a property to a different value at the end than it had at the start.
+
+    If you do keyframe something, give the first and last keyframes the **same
+    value** so the loop doesn't jump.
+  </Step>
+  <Step title="Export">
+    **EXPORT** → MP4 → 2× (3840×2160) → **Render**.
+  </Step>
+</Steps>
+
+## A transparent overlay for After Effects
+
+<Steps>
+  <Step title="Turn on alpha">
+    Controls panel → Colour → **alpha bg**. The preview goes checkerboard.
+  </Step>
+  <Step title="Export ProRes">
+    **EXPORT** → **ProRes 4444 · .mov** → **Render**. Keep it short; ProRes 4444
+    is roughly 2 GB per 10 seconds at 4K, and the modal will warn you.
+  </Step>
+  <Step title="If it's too long for ProRes">
+    Use **PNG sequence** with **Write into a folder** instead. After Effects
+    imports a PNG folder as a sequence with alpha intact, and there's no size
+    ceiling.
+  </Step>
+</Steps>
+
+## A still for a slide
+
+<Steps>
+  <Step title="Match the slide shape">
+    `preset` → **1920×1080 · 16:9**, or set a custom `comp` size.
+  </Step>
+  <Step title="Freeze a frame you like">
+    In **Freeform**, press <kbd>space</kbd> to pause when something looks good.
+    In **Editor**, scrub the playhead.
+  </Step>
+  <Step title="Export">
+    **PNG** → **Regular** (or **Transparent** to sit it over a coloured slide) →
+    2× → **Download**.
+  </Step>
+</Steps>
+
+## Particles that build up over time
+
+<Steps>
+  <Step title="Start empty">
+    Go to frame 0 (<kbd>Home</kbd>). Set particle `count` to `0`.
+  </Step>
+  <Step title="Animate it">
+    Click the stopwatch next to `count`. Press <kbd>End</kbd>, then drag `count`
+    up to `12`.
+  </Step>
+  <Step title="Ease the build">
+    Right-click the first keyframe → **Ease out**, so they arrive quickly and
+    then settle. Press <kbd>G</kbd> to see and fine-tune the curve.
+  </Step>
+</Steps>
+
+<Note>
+  `count` is a whole number, so its graph draws as a staircase. That's accurate —
+  particles appear one at a time. The easing controls *when* each one appears.
+</Note>

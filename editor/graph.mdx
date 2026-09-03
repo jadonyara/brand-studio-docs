@@ -1,0 +1,65 @@
+---
+title: "Graph editor"
+description: "Shaping how a value moves between keyframes."
+---
+
+Press <kbd>G</kbd> to swap the keyframe lanes for the graph editor. It plots one
+property's **value against time**, so you can see and shape the motion rather
+than just its start and end.
+
+Click a property name in the left column to choose which curve you're editing.
+Other animated properties are drawn faintly behind it for context.
+
+## Handles
+
+Select a keyframe and two orange handles appear — its "legs". Dragging them
+bends the curve:
+
+- **Steep** section = the value is changing fast there
+- **Flat** section = it's nearly holding still
+
+Handles behave the same way as CSS `cubic-bezier`, if that's a useful anchor.
+
+<Note>
+  Pulling a handle **above or below** its keyframes makes the curve overshoot —
+  the value goes past its target and settles back. That's how you get a bounce
+  or a snap. This is deliberate and unrestricted on the value axis.
+
+  Handle **horizontal** movement is limited to the gap between its own keyframe
+  and the next one. Going further would make the curve double back in time, which
+  would leave a single frame with two different values.
+</Note>
+
+## Constraining a drag
+
+Hold <kbd>Shift</kbd> while dragging a keyframe or a handle to lock it to one
+axis — time only, or value only. A dashed guide shows which axis you're on.
+
+The axis follows your dominant direction and re-picks if you cross over, so you
+can start sideways and swing vertical without releasing. Engaging <kbd>Shift</kbd>
+partway through a drag snaps the held axis back to where it started.
+
+<Tip>
+  Shift-locking to the **time** axis is the reliable way to retime a keyframe
+  without nudging its value by a fraction — much easier than trying to drag
+  perfectly horizontally by hand.
+</Tip>
+
+## Editing in the graph
+
+| Action | How |
+| --- | --- |
+| Move a keyframe in time and value | Drag it |
+| Add a keyframe | Double-click on empty graph |
+| Remove one | Double-click it |
+| Easing presets | Right-click |
+
+The vertical scale auto-fits the visible curve, and holds still while you drag
+so the graph doesn't rescale under your cursor.
+
+## Integer properties
+
+Controls that only take whole numbers — `lines`, particle `count`, `cell px` —
+draw as a **staircase**. That isn't a bug: it's showing you the actual rendered
+values, which step rather than slide. The underlying curve is still smooth, and
+the easing still governs *when* each step happens.

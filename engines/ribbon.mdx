@@ -1,0 +1,73 @@
+---
+title: "Ribbon"
+description: "Flowing fields of gradient lines with travelling particles."
+---
+
+Ribbon draws a stack of sine-wave lines across the frame, coloured along a
+gradient, with optional particles that travel along them.
+
+## Shape
+
+| Control | Range | What it does |
+| --- | --- | --- |
+| `lines` | 2–80 | How many lines in the stack. |
+| `spacing` | 1–20 | Vertical gap between lines. Low values overlap them into a solid band. |
+| `res` | 10–300 | Points per line. Higher is smoother but slower; drop it if the preview stutters. |
+| `amp` | 0–400 | Wave height. The main "how dramatic is this" control. |
+| `freq` | 0.05–6 | How many wave cycles fit across the frame. |
+| `phase` | 0–0.5 | Offset between neighbouring lines. Zero moves them in lockstep; higher fans them out. |
+| `twist` | 0–1 | Blends in a second, counter-rotating wave. |
+| `bulge` | 0–1 | Swells amplitude toward the middle of the frame. |
+| `morph` | 0–2 | Adds a wandering secondary distortion. Above ~1 it gets chaotic. |
+
+## Motion
+
+| Control | What it does |
+| --- | --- |
+| `motion` | `spin`, `flow`, `breathe` or `morph` — four different ways the field moves. |
+| `speed` | Overall rate. `0` freezes it. |
+
+<Tip>
+  `speed` is a good thing to keyframe: ramping it from 0 accelerates the whole
+  field from a standstill. It's integrated properly, so animating it ramps
+  smoothly instead of jumping.
+</Tip>
+
+## Stroke and colour
+
+| Control | What it does |
+| --- | --- |
+| `width` | Line thickness, 0.2–6. |
+| `opacity` | Line opacity. Lower values let the stack build up density. |
+| `start` / `end` | Gradient endpoints. Each line is coloured by its position in the stack. |
+| `bg` | Background colour. |
+| `alpha bg` | Transparent background. Turn this on for overlays — see [Exporting](/exporting#transparency). |
+
+## Particles
+
+Small streaks that ride along the lines.
+
+| Control | What it does |
+| --- | --- |
+| `on` | Master toggle. |
+| `count` | Particles per line, 0–20. |
+| `size` | Streak thickness. |
+| `length` | Streak length, 1–200. |
+| `speed` | Travel rate. **Negative values run backwards.** |
+| `coverage` | How much of each line's length they traverse. |
+| `sparse` | With `scatter` on, what fraction of lines get particles at all. |
+| `variance` | Randomises size per particle. |
+| `fade` | Fades each streak from transparent to solid along its length. |
+| `scatter` | Distributes particles across a random subset of lines instead of all of them. |
+| `seed` | Change for a different random arrangement. |
+| `p-color 1–4` | Particle colours, assigned pseudo-randomly. |
+
+<Note>
+  `count` is the one people reach for most — animating it from 0 makes particles
+  appear over time.
+</Note>
+
+## Seed
+
+**Randomize** rerolls shape, motion and stroke. It leaves your colours alone,
+so brand colours survive.

@@ -1,0 +1,68 @@
+---
+title: "Troubleshooting"
+description: "Known limits and the things that trip people up."
+---
+
+## Which browser
+
+Use **Chrome** or **Edge**.
+
+Everything works anywhere, with two exceptions:
+
+- **MP4 export** needs the WebCodecs API, which Safari doesn't have. ProRes and
+  PNG sequence still work.
+- **Write into a folder** for PNG sequences needs the File System Access API.
+  When it's unavailable the option is greyed out and the `.zip` download — which
+  works everywhere — is used instead.
+
+## The preview stutters
+
+The live preview and the export are independent. **A choppy preview does not
+produce a choppy file** — exports are rendered frame by frame and always come
+out at the composition frame rate.
+
+To make the preview smoother while you work:
+
+- Set **preview** to `1/2` or `1/4` in the timeline bar
+- On Ribbon, lower `res` or `lines`
+- On Dither, raise `cell px` — it's by far the biggest cost
+
+## The export ran out of memory
+
+Almost always ProRes 4444, which is enormous — roughly 2 GB per 10 seconds at
+4K. The whole file has to be assembled in memory before it can be saved.
+
+Use a **PNG sequence** written to a folder instead. It streams to disk with no
+size ceiling, and After Effects imports a PNG folder as a sequence with alpha.
+
+## My SVG is missing the particles
+
+Expected. SVG export covers the ribbon lines only — particles use gradient
+strokes the vector exporter doesn't emit. Use PNG if you need them.
+
+## My 4K export isn't 3840×2160
+
+The default composition is 1720×1080, which isn't 16:9, and export scale is a
+multiple of the comp. Set the comp to **1920×1080** via the `preset` dropdown
+first, then export at 2×. See [Exporting](/exporting#resolution).
+
+## The "fit" button does nothing
+
+It resets the timeline zoom, and the timeline opens already fitted — so with
+nothing zoomed there's nothing to reset. It dims when that's the case. Zoom in
+with **+** or <kbd>Alt</kbd>+scroll and it becomes active.
+
+## I lost my work
+
+Brand Studio autosaves to your browser, so a refresh restores where you were.
+It does **not** sync between browsers or machines.
+
+For anything you care about, hit **save** in the timeline bar to download a
+project file, and **load** to bring it back. **reset** clears the autosave.
+
+## A handle won't go past its keyframe
+
+That's intentional. A graph-editor handle can move freely up and down — that's
+what produces overshoot — but its horizontal travel stops at the neighbouring
+keyframe. Going further would make the curve run backwards in time, leaving one
+frame with two values.

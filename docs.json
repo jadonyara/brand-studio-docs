@@ -1,0 +1,59 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Brand Studio",
+  "description": "Generate branded motion graphics and stills in the browser.",
+  "colors": {
+    "primary": "#12b981",
+    "light": "#3bdca0",
+    "dark": "#0f9d6b"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Getting started",
+        "pages": [
+          "index",
+          "quickstart",
+          "modes"
+        ]
+      },
+      {
+        "group": "Generators",
+        "pages": [
+          "engines/ribbon",
+          "engines/dither"
+        ]
+      },
+      {
+        "group": "Animating",
+        "pages": [
+          "editor/timeline",
+          "editor/graph"
+        ]
+      },
+      {
+        "group": "Output",
+        "pages": [
+          "exporting",
+          "recipes"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "shortcuts",
+          "troubleshooting"
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Open Brand Studio",
+      "href": "https://mintlify-brand-studio.vercel.app"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+---
+title: "Quickstart"
+description: "Make a still and then an animated loop, in about five minutes."
+---
+
+## A still image in one minute
+
+<Steps>
+  <Step title="Open the tool">
+    Go to [mintlify-brand-studio.vercel.app](https://mintlify-brand-studio.vercel.app).
+    It opens on **Ribbon** in **Editor** mode.
+  </Step>
+  <Step title="Switch to Freeform">
+    Click **freeform** in the mode switch, top left under the generator tabs.
+    The timeline disappears — you don't need it for a still.
+  </Step>
+  <Step title="Find a look">
+    Open the controls panel on the right and move things around. If you'd
+    rather explore than fiddle, scroll to the bottom of the panel and hit
+    **Randomize** a few times.
+  </Step>
+  <Step title="Export it">
+    Click **PNG** in the bottom bar. Pick **Regular** or **Transparent**, pick a
+    scale, and hit **Download**.
+  </Step>
+</Steps>
+
+## An animated loop in five
+
+<Steps>
+  <Step title="Switch to Editor mode">
+    Click **editor**. The timeline reappears at the bottom.
+  </Step>
+  <Step title="Turn on a stopwatch">
+    In the controls panel, click the small circle to the left of any control —
+    say **amp** under Shape. It turns green and the property appears as a track
+    in the timeline. That circle is the stopwatch: it means "animate this".
+  </Step>
+  <Step title="Set a second keyframe">
+    Press <kbd>End</kbd> to jump to the last frame, then drag the **amp** slider
+    to a different value. That creates a second keyframe automatically.
+  </Step>
+  <Step title="Watch it">
+    Press <kbd>space</kbd>. The playhead loops and the value animates between
+    your two keyframes.
+  </Step>
+  <Step title="Smooth it out">
+    Right-click either keyframe diamond in the timeline and choose **Easy ease**.
+    The diamond becomes a circle, meaning the curve has been shaped.
+  </Step>
+  <Step title="Export">
+    Click **EXPORT**, leave the format on **MP4**, and hit **Render**.
+  </Step>
+</Steps>
+
+<Tip>
+  Repeat step 2 for as many controls as you like — colours, particle density,
+  speed. Anything with a stopwatch can be animated, and they all animate
+  independently.
+</Tip>
+
+## Next
+
+<Columns cols={2}>
+  <Card title="Shaping the motion" icon="bezier-curve" href="/editor/graph">
+    The graph editor, for when easy ease isn't the curve you want.
+  </Card>
+  <Card title="Picking a format" icon="file-export" href="/exporting">
+    Which export to use, and the one resolution gotcha.
+  </Card>
+</Columns>

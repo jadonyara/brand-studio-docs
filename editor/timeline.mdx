@@ -1,0 +1,85 @@
+---
+title: "Timeline"
+description: "Keyframing any property, and reading the timeline at a glance."
+---
+
+## The stopwatch
+
+Every control in the panel has a small circle to its left. That's the
+stopwatch, and it means "animate this property".
+
+- **Click it** → the circle fills green, a keyframe is dropped at the playhead,
+  and the property appears as a track in the timeline
+- **Click it again** → animation is removed and the value at the playhead is
+  baked in as the new static value
+
+Once a property is animated, **moving its slider sets a keyframe at the
+playhead** rather than changing the value globally. That's the core loop: move
+the playhead, change the value, repeat.
+
+The small diamond next to the stopwatch is a manual keyframe toggle — it lights
+up when a keyframe sits exactly on the playhead, and clicking it adds or removes
+one there.
+
+## Reading keyframe shapes
+
+The glyph tells you what the curve is doing:
+
+| Glyph | Meaning |
+| --- | --- |
+| **Diamond** | Linear — no easing, constant rate |
+| **Circle** | Bezier — the curve has been shaped, by a preset or by hand |
+| **Square** | Hold — the value freezes until the next keyframe |
+
+New keyframes are linear, so a diamond means "untouched".
+
+## Working with keyframes
+
+| Action | How |
+| --- | --- |
+| Select | Click a keyframe |
+| Add to selection | <kbd>Shift</kbd>-click |
+| Select all | <kbd>⌘A</kbd> — every keyframe on every track |
+| Move | Drag. Multiple selected keyframes move together, preserving spacing. |
+| Add / remove at a point | Double-click a lane |
+| Delete | <kbd>Delete</kbd> |
+| Change easing | Right-click → Easy ease, Ease in, Ease out, Ease in/out, Linear, Hold |
+
+<Tip>
+  <kbd>⌘A</kbd> then right-click → **Easy ease** eases an entire animation in one
+  go. <kbd>⌘A</kbd> then drag shifts the whole thing in time as a block.
+</Tip>
+
+## Navigating
+
+| Action | How |
+| --- | --- |
+| Play / pause | <kbd>space</kbd> |
+| Step one frame | <kbd>←</kbd> / <kbd>→</kbd> |
+| Step one second | <kbd>Shift</kbd> + <kbd>←</kbd> / <kbd>→</kbd> |
+| Jump between keyframes | <kbd>J</kbd> / <kbd>K</kbd> |
+| Start / end | <kbd>Home</kbd> / <kbd>End</kbd> |
+| Scrub | Drag the ruler, or click anywhere in the lanes |
+
+## The in / out range
+
+The green bracket strip along the bottom of the ruler marks the export range.
+Set it with <kbd>I</kbd> and <kbd>O</kbd> at the playhead, or drag the brackets.
+Frames outside it are shaded.
+
+Playback loops over this range, and **EXPORT** offers it as **in → out**
+alongside the whole composition — useful for rendering one section without
+changing the comp length.
+
+## Zooming
+
+The timeline opens fitted to the whole composition. Zoom in when you need to
+place keyframes a few frames apart:
+
+- **−** and **+** in the timeline bar
+- <kbd>Alt</kbd> + scroll to zoom around the cursor
+- <kbd>Shift</kbd> + scroll to pan
+- **fit** or <kbd>F</kbd> to go back to the whole comp
+
+**fit** dims when the whole composition is already in view, meaning there's
+nothing to reset.

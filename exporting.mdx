@@ -1,0 +1,82 @@
+---
+title: "Exporting"
+description: "Which format to use, how resolution works, and how to keep transparency."
+---
+
+## Stills
+
+Two buttons in the bottom bar:
+
+- **PNG** — asks for background (regular or transparent) and a scale, then
+  downloads the frame currently on screen
+- **SVG** — vector, exported immediately at the current frame
+
+<Warning>
+  **SVG exports the ribbon lines only — particles are not included.** They rely
+  on gradient strokes the vector exporter doesn't emit. If you need particles,
+  use PNG.
+</Warning>
+
+## Video and sequences
+
+Click **EXPORT**.
+
+| Format | Alpha | Speed | Use it for |
+| --- | --- | --- | --- |
+| **MP4 · H.264** | No | Fast | Web, Slack, decks, social |
+| **ProRes 4444 · .mov** | Yes | Slow | Handing off to After Effects or Premiere |
+| **PNG sequence** | Yes | Slow | Long clips, or anything too large for memory |
+
+MP4 is hardware-encoded and quick. The other two render and encode one frame at
+a time, so a long 4K clip takes minutes — the progress bar reports where it is,
+and **Stop** cancels cleanly.
+
+## Frame rate
+
+Every export renders frame by frame off the timeline. Frame *N* is handed to the
+encoder stamped *N ÷ fps* regardless of how long it took to draw, so **the file
+is exactly the composition frame rate** even if the live preview was crawling.
+Nothing is captured off the screen.
+
+## Resolution
+
+**Scale** is a multiple of your composition size, and the exact pixel dimensions
+are shown next to each option.
+
+<Warning>
+  The default composition is **1720×1080**, which is not 16:9. Exporting that at
+  2× gives **3440×2160** — a hair narrower than UHD.
+
+  For exactly **3840×2160**, set the comp to **1920×1080** using the `preset`
+  dropdown in the timeline bar first, then export at 2×.
+</Warning>
+
+## Transparency
+
+Turn on **alpha bg** in the controls panel (under Colour). The preview switches
+to a checkerboard so you can see what's transparent.
+
+Then pick a format that can carry it: **ProRes 4444** or a **PNG sequence**.
+
+<Note>
+  MP4 has no alpha channel. If **alpha bg** is on and you choose MP4, the export
+  modal warns you and the background flattens to black.
+</Note>
+
+## Where PNG sequences go
+
+Two destinations:
+
+- **Download a .zip** (default) — works in every browser, no permission prompt
+- **Write into a folder** — asks for a folder, then streams frames straight to
+  disk. The only option with no practical size limit.
+
+A zip is assembled in memory, so for very large sequences choose the folder.
+The modal warns you when the estimate gets big enough to matter.
+
+## Reading the estimate
+
+The **est. size** figure is a rough projection, not a measurement — actual size
+depends on how much movement is in the frame. Treat it as an order of magnitude,
+mainly as a signal for whether you're about to ask the browser for something it
+can't hold.
