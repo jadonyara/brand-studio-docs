@@ -1,0 +1,117 @@
+---
+title: "Generating with Claude"
+description: "Describe the asset you want and have it rendered for you, without opening the app."
+---
+
+Brand Studio ships an [MCP](https://modelcontextprotocol.io) server, so an AI
+assistant can drive the generators directly. You describe what you want, it
+renders, looks at the result, adjusts, and exports.
+
+<Note>
+  This is optional and separate from the app. Everything below is for people who
+  want to generate assets from a chat instead of moving sliders — the web app
+  needs none of it.
+</Note>
+
+## What it looks like
+
+> generate a moody dark grainy dither texture for a section divider
+
+> make me a 4-second ribbon loop where the particles build up and the field
+> accelerates from a standstill — 1920×1080, save it to my desktop
+
+> that's close but too busy, halve the line count and slow it down
+
+The third one is the useful part. `render_still` hands the image back, so the
+assistant can see what it produced and refine it rather than guessing at
+parameters blind.
+
+## Setup
+
+You need [Claude Code](https://claude.com/claude-code) (or any MCP client),
+Node 20.17+, and Chrome or Edge installed.
+
+<Steps>
+  <Step title="Get the tool source">
+    The MCP server lives in the Brand Studio source repo, which isn't published
+    — ask for access. Once you have it:
+
+    ```bash
+    cd brand-studio/mcp && npm install
+    ```
+  </Step>
+  <Step title="Register the server">
+    ```bash
+    claude mcp add --scope user brand-studio -- node /absolute/path/to/brand-studio/mcp/server.js
+    ```
+  </Step>
+  <Step title="Restart your client">
+    MCP servers load at startup. Check it with `claude mcp list` — it should
+    report `✔ Connected`.
+  </Step>
+</Steps>
+
+## The tools
+
+| Tool | What it does |
+| --- | --- |
+| `list_parameters` | Every control with its type, range, default and options |
+| `list_presets` | Named starting points, plus worked keyframe examples |
+| `render_still` | One frame, returned as an image so it can be judged and refined |
+| `render_video` | A clip — MP4, ProRes 4444 with alpha, or a zipped PNG sequence |
+| `save_project` | A project file you can open with **load** and finish by hand |
+
+`save_project` is the bridge back to the app. If the assistant gets you 80% of
+the way, have it save a project and refine the rest in the
+[timeline](/editor/timeline).
+
+## Settings
+
+A flat object — only the values you want to change, everything else keeps its
+default. Names match the controls documented under
+[Ribbon](/engines/ribbon) and [Dither](/engines/dither).
+
+```json
+{
+  "engine": "ribbon",
+  "settings": { "amplitude": 220, "count": 34, "gradientEnd": "#44aeff" }
+}
+```
+
+## Keyframes
+
+Optional. Keyed by property, with times **in seconds**:
+
+```json
+{
+  "engine": "ribbon",
+  "duration_seconds": 4,
+  "animate": {
+    "particleCount": [
+      { "t": 0, "v": 0, "ease": "easeOut" },
+      { "t": 3, "v": 12 }
+    ],
+    "speed": [
+      { "t": 0, "v": 0, "ease": "easeIn" },
+      { "t": 4, "v": 2 }
+    ]
+  }
+}
+```
+
+Eases are `linear`, `easyEase`, `ease`, `easeIn`, `easeOut` and `hold`, matching
+the presets in the [graph editor](/editor/graph). Colours interpolate; whole-number
+properties step.
+
+## Worth knowing
+
+- **It renders through the real app.** The server loads Brand Studio in a
+  headless browser and calls the same rendering and export code the web app
+  uses, so output is identical and there's no second implementation to drift.
+- **Chrome or Edge must be installed.** MP4 export needs WebCodecs. Override the
+  browser path with `BRAND_STUDIO_CHROME` if it isn't found automatically.
+- **Stills are quick, video is not.** Iterate on stills, then render the clip
+  once you're happy — the same advice as [exporting](/exporting).
+- **The same format limits apply.** MP4 can't carry transparency and the server
+  refuses that combination rather than silently flattening it. See
+  [transparency](/exporting#transparency).

@@ -60,6 +60,31 @@ It does **not** sync between browsers or machines.
 For anything you care about, hit **save** in the timeline bar to download a
 project file, and **load** to bring it back. **reset** clears the autosave.
 
+## The Claude tools don't show up
+
+MCP servers are loaded when the client starts, so a newly registered server
+won't appear until you restart. Confirm it's registered and healthy with:
+
+```bash
+claude mcp list
+```
+
+It should report `brand-studio ... ✔ Connected`. If it's listed but failing,
+run the server directly — `node path/to/mcp/server.js` — and read the error.
+The most common cause is a missing `npm install` in `mcp/`.
+
+## Claude says it can't find a browser
+
+The MCP server renders by driving a real headless browser, so Chrome or Edge
+has to be installed. It checks the usual locations on macOS, Linux and Windows;
+if yours is somewhere else, point at it:
+
+```bash
+BRAND_STUDIO_CHROME=/path/to/chrome
+```
+
+Safari can't substitute — MP4 export needs WebCodecs.
+
 ## A handle won't go past its keyframe
 
 That's intentional. A graph-editor handle can move freely up and down — that's
