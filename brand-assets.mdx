@@ -3,6 +3,47 @@ title: "Brand assets"
 description: "The Mintlify mark, wordmark and lockups, in the variants Brand Studio uses."
 ---
 
+## Placing a logo in your composition
+
+The logos are built into the app as a **brand layer**, so you can composite one
+into a still or a video rather than downloading it and pasting it in afterwards.
+
+Open the controls panel and the **Brand** group sits at the top, above the
+generator controls. It's shared between Ribbon and Dither, so it stays put when
+you switch tabs.
+
+| Control | What it does |
+| --- | --- |
+| `logo` | Which variant, or `none` to turn the layer off |
+| `size` | Longest edge as a fraction of the frame width — `0.3` is 30% of the width |
+| `x` / `y` | Position as a fraction of the frame. `0.5, 0.5` is dead centre |
+| `rotate` | Degrees |
+| `opacity` | 0 to 1 |
+
+Position and size are fractions rather than pixels, so a logo keeps its relative
+placement when you retarget the composition to square or vertical, and at any
+export scale.
+
+<Tip>
+  The brand layer is keyframable like everything else — click its stopwatch and
+  it becomes a track in the timeline. Animating `opacity` and `size` together
+  from a lower value gives you a logo that fades and scales in; add `x` to slide
+  it. Same [easing and graph editor](/editor/graph) as the generator properties.
+</Tip>
+
+<Note>
+  Pick a variant that suits your background — the wordmark colour is baked into
+  each file. On a dark composition use `lockup-white` or `lockup-green-on-dark`;
+  on a light one use `lockup-black` or `lockup-green-on-light`. The tables below
+  say which is which.
+</Note>
+
+The layer renders into the preview, PNG and SVG stills, and every video export
+through the same path, so what you see is what you get. SVG export embeds the
+logo as vector.
+
+## Downloading the files
+
 Source SVGs for the mark, wordmark and lockups. Right-click any file below and
 **Save link as** to download, or grab the whole set from the
 [repository](https://github.com/jadonyara/brand-studio-docs/tree/main/images/brand).

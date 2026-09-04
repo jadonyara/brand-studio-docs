@@ -78,6 +78,29 @@ default. Names match the controls documented under
 }
 ```
 
+## Placing a logo
+
+Pass a `brand` object to composite a logo into the frame — same layer the app
+exposes, see [brand assets](/brand-assets#placing-a-logo-in-your-composition).
+
+```json
+{
+  "engine": "ribbon",
+  "settings": { "background": "#0a0b0f" },
+  "brand": { "asset": "lockup-white", "x": 0.5, "y": 0.88, "size": 0.3 }
+}
+```
+
+To animate it, prefix the property with `brand.` in `animate`:
+
+```json
+{
+  "animate": {
+    "brand.opacity": [{ "t": 0, "v": 0 }, { "t": 1.5, "v": 1, "ease": "easeOut" }]
+  }
+}
+```
+
 ## Keyframes
 
 Optional. Keyed by property, with times **in seconds**:
